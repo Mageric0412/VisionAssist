@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VisionAssist</string>
+    <string name="app_description">Visual assistance for the visually impaired</string>
+
+    <!-- Detection Engines -->
+    <string-array name="detection_engines">
+        <item>Google ML Kit</item>
+        <item>Huawei HMS ML Kit</item>
+        <item>TFLite YOLOv8</item>
+    </string-array>
+
+    <string-array name="detection_engine_values">
+        <item>google_mlkit</item>
+        <item>huawei_hms</item>
+        <item>tflite_yolo</item>
+    </string-array>
+
+    <!-- Speech Engines -->
+    <string-array name="speech_engines">
+        <item>Android TTS</item>
+        <item>Huawei TTS</item>
+    </string-array>
+
+    <string-array name="speech_engine_values">
+        <item>android_tts</item>
+        <item>huawei_tts</item>
+    </string-array>
+
+    <!-- Camera -->
+    <string-array name="camera_options">
+        <item>Back Camera</item>
+        <item>Front Camera</item>
+    </string-array>
+
+    <string-array name="camera_values">
+        <item>back</item>
+        <item>front</item>
+    </string-array>
+
+    <!-- Permissions -->
+    <string name="permission_camera_title">Camera Permission Required</string>
+    <string name="permission_camera_message">VisionAssist needs camera access to detect obstacles and help you navigate safely.</string>
+
+    <!-- Status Messages -->
+    <string name="status_initializing">Initializing…</string>
+    <string name="status_ready">Ready</string>
+    <string name="status_detecting">Detecting…</string>
+    <string name="status_paused">Paused</string>
+    <string name="status_error">Error</string>
+
+    <!-- Buttons -->
+    <string name="btn_settings">Settings</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_stop">Stop</string>
+    <string name="btn_test">Test</string>
+</resources>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Detection Engine"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="detection_engine"
+            android:title="Object Detection"
+            android:summary="Select detection engine"
+            android:entries="@array/detection_engines"
+            android:entryValues="@array/detection_engine_values"
+            android:defaultValue="google_mlkit"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="sensitivity"
+            android:title="Detection Sensitivity"
+            android:summary="Higher = more detections"
+            android:defaultValue="50"
+            android:max="100"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="min_confidence"
+            android:title="Minimum Confidence"
+            android:summary="Minimum confidence threshold"
+            android:defaultValue="60"
+            android:max="100"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Speech Settings"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="speech_engine"
+            android:title="Speech Engine"
+            android:summary="Select TTS engine"
+            android:entries="@array/speech_engines"
+            android:entryValues="@array/speech_engine_values"
+            android:defaultValue="android_tts"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="speech_rate"
+            android:title="Speech Rate"
+            android:summary="Speed of speech"
+            android:defaultValue="100"
+            android:max="200"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="speech_pitch"
+            android:title="Speech Pitch"
+            android:summary="Pitch of voice"
+            android:defaultValue="100"
+            android:max="200"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="report_interval"
+            android:title="Report Interval"
+            android:summary="Time between announcements (ms)"
+            android:defaultValue="1500"
+            android:max="5000"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Announcement Content"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            android:key="report_direction"
+            android:title="Report Direction"
+            android:summary="Announce left/right/center"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="report_distance"
+            android:title="Report Distance"
+            android:summary="Announce estimated distance"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="report_size"
+            android:title="Report Size"
+            android:summary="Announce object size"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="report_scene"
+            android:title="Report Scene"
+            android:summary="Announce indoor/outdoor/lighting"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Detection Filters"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            android:key="focus_closest"
+            android:title="Focus Closest Only"
+            android:summary="Only announce closest obstacle"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="distance_threshold"
+            android:title="Distance Threshold"
+            android:summary="Maximum distance to report (meters)"
+            android:defaultValue="300"
+            android:max="1000"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Feedback"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            android:key="vibration_feedback"
+            android:title="Vibration Feedback"
+            android:summary="Vibrate on obstacle detection"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Camera"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="camera_facing"
+            android:title="Camera"
+            android:summary="Select camera"
+            android:entries="@array/camera_options"
+            android:entryValues="@array/camera_values"
+            android:defaultValue="back"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
