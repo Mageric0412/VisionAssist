@@ -78,7 +78,6 @@ class FallDetector(
     enum class DetectionState {
         IDLE,           // Normal monitoring
         IMPACT_DETECTED, // High acceleration detected
-        POTENTIAL_FALL,  // Settling detected after impact
         FALL_CONFIRMED   // Fall confirmed
     }
 
@@ -194,7 +193,6 @@ class FallDetector(
                 }
             }
 
-            DetectionState.POTENTIAL_FALL,
             DetectionState.FALL_CONFIRMED -> {
                 // Should not happen, but reset if it does
                 state = DetectionState.IDLE
