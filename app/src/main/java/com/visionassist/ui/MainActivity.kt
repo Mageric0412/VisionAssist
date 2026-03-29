@@ -311,7 +311,6 @@ class MainActivity : AppCompatActivity(), CameraManager.FrameCallback, CompassMa
                     frameTimeHistory.removeAt(0)
                 }
                 fps = if (frameTimeHistory.isNotEmpty()) {
-                    (frameTimeHistory.average() / 1).toInt().coerceIn(1, 60)
                     (1000 / frameTimeHistory.average()).toInt().coerceIn(1, 60)
                 } else {
                     0

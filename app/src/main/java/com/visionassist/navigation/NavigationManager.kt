@@ -50,7 +50,6 @@ class NavigationManager(
         const val DIRECTION_AHEAD = 0
         const val DIRECTION_LEFT = 1
         const val DIRECTION_RIGHT = 2
-        const val DIRECTION_BEHIND = 3
     }
 
     interface NavigationListener {
