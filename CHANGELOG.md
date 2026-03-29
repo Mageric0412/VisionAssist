@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1.0] - 2026-03-29
+
+### Fixed
+
+- Fall detection state machine: removed dead POTENTIAL_FALL state, fixed race condition in detection flow
+
+### Added
+
+- Advanced obstacle ahead warnings with distance-based alert thresholds
+- Real-time navigation direction announcements
+
 ## [1.1.0.0] - 2026-03-29
 
 ### Added
