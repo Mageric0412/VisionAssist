@@ -87,6 +87,20 @@ See [TESTING.md](TESTING.md) for detailed testing guide.
 2. **YOLO Model**: Place `yolov8n.tflite` in `app/src/main/assets/`
 3. **Camera Permission**: Required for detection to work
 
+## Design System
+
+Always read DESIGN.md before making any visual or UI decisions.
+All font choices, colors, spacing, and aesthetic direction are defined there.
+Do not deviate without explicit user approval.
+
+Key design principles:
+- **Accessibility-first**: WCAG AAA contrast (7:1), 56dp touch targets, 18sp minimum fonts
+- **Dark theme**: #121212 background, high contrast elements
+- **Minimal motion**: No decorative animations
+- **Functional feedback**: TTS + vibration for obstacle alerts
+
+In QA mode, flag any code that doesn't match DESIGN.md.
+
 ## Code Style
 
 - Kotlin 1.9.22
