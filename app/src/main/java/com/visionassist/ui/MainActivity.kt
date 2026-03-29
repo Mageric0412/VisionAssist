@@ -19,19 +19,27 @@ import com.visionassist.config.AppConfig
 import com.visionassist.analysis.SceneAnalyzer
 import com.visionassist.detector.DetectedObject
 import com.visionassist.detector.ObjectDetectorInterface
+import com.visionassist.navigation.CompassManager
+import com.visionassist.navigation.NavigationManager
 import com.visionassist.speech.SpeechManager
 import com.visionassist.utils.AnnouncementBuilder
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity(), CameraManager.FrameCallback {
+class MainActivity : AppCompatActivity(), CameraManager.FrameCallback, CompassManager.CompassListener, NavigationManager.NavigationListener {
+
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 
     private lateinit var cameraManager: CameraManager
     private lateinit var objectDetector: ObjectDetectorInterface
     private lateinit var sceneAnalyzer: SceneAnalyzer
     private lateinit var speechManager: SpeechManager
     private lateinit var config: AppConfig
+    private lateinit var compassManager: CompassManager
+    private lateinit var navigationManager: NavigationManager
 
     private var previewView: PreviewView? = null
     private var statusText: TextView? = null
@@ -73,6 +81,12 @@ class MainActivity : AppCompatActivity(), CameraManager.FrameCallback {
 
         objectDetector = app.objectDetectorFactory.createDetector(config.detectionEngine)
         cameraManager = CameraManager(this, this)
+
+        // Initialize navigation components
+        compassManager = CompassManager(this)
+        compassManager.listener = this
+        navigationManager = NavigationManager(this, speechManager)
+        navigationManager.listener = this
     }
 
     private fun setupUI() {
@@ -109,11 +123,17 @@ class MainActivity : AppCompatActivity(), CameraManager.FrameCallback {
 
         checkCameraPermission()
         speechManager.initialize()
+
+        // Start navigation (GPS + compass)
+        navigationManager.startNavigation(this)
+        compassManager.start()
     }
 
     override fun onPause() {
         super.onPause()
         stopDetection()
+        compassManager.stop()
+        navigationManager.stopNavigation()
     }
 
     override fun onDestroy() {
@@ -171,6 +191,11 @@ class MainActivity : AppCompatActivity(), CameraManager.FrameCallback {
     private fun processDetectionResults(objects: List<DetectedObject>) {
         lastDetectedObjects = objects
         updateDebugOverlay(objects)
+
+        // Pass all detected objects to navigation manager for advance warning
+        objects.forEach { obj ->
+            navigationManager.processDetectedObject(obj)
+        }
 
         val relevantObjects = filterRelevantObjects(objects)
 
@@ -311,5 +336,24 @@ class MainActivity : AppCompatActivity(), CameraManager.FrameCallback {
         val startTime = System.currentTimeMillis()
         objectDetector.detect(bitmap, bitmap.width, bitmap.height)
         Timber.v("Frame callback: ${System.currentTimeMillis() - startTime}ms")
+    }
+
+    // CompassManager.CompassListener implementation
+    override fun onHeadingChanged(heading: Float) {
+        navigationManager.updateHeading(heading)
+    }
+
+    // NavigationManager.NavigationListener implementation
+    override fun onLocationChanged(location: android.location.Location) {
+        Timber.v("$TAG: Location: ${location.latitude}, ${location.longitude}")
+    }
+
+    override fun onDirectionChanged(direction: Int, targetDistance: Float?) {
+        // Optional: announce direction periodically
+    }
+
+    override fun onObstacleWarning(obstacle: DetectedObject, distance: Float, direction: Int) {
+        // Navigation manager already announced via SpeechManager
+        Timber.d("$TAG: Advance obstacle warning logged")
     }
 }
