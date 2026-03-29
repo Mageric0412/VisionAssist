@@ -99,6 +99,12 @@ fun `regression issue NNN - description`() {
 | SceneAnalyzer | 80% | 60% |
 | AppConfig | 100% | 85% |
 | ObjectDetectorInterface | 90% | 0% |
+| NavigationDirection | 80% | 0% |
+| EmergencyContactManager | 80% | 0% |
+| FallDetector | 80% | 0% |
+| CompassDirection | 80% | 0% |
+| PlaceMemoryManager | 80% | 0% |
+| PlaceOfInterest | 80% | 0% |
 
 ## Adding Tests
 

@@ -111,7 +111,6 @@ class NavigationDirectionTest {
         assertEquals(0, NavigationManager.DIRECTION_AHEAD)
         assertEquals(1, NavigationManager.DIRECTION_LEFT)
         assertEquals(2, NavigationManager.DIRECTION_RIGHT)
-        assertEquals(3, NavigationManager.DIRECTION_BEHIND)
     }
 
     @Test

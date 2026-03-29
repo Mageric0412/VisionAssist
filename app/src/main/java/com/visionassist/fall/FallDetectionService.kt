@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.visionassist.R
-import com.visionassist.VisionAssistApp
 import com.visionassist.ui.FallAlertActivity
 import timber.log.Timber
 
@@ -114,7 +113,7 @@ class FallDetectionService : Service(), FallDetector.FallDetectionListener {
     }
 
     private fun buildNotification(isActive: Boolean): Notification {
-        val contentIntent = Intent(this, VisionAssistApp.getInstance().javaClass)
+        val contentIntent = Intent(this, com.visionassist.ui.MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             this,
             0,

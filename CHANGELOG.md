@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2.0] - 2026-03-29
+
+### Fixed
+
+- FallDetectionService: Fixed crash when tapping notification - was launching Application class instead of MainActivity
+- CompassDirectionTest: Removed reference to non-existent DIRECTION_BEHIND constant
+
 ## [1.1.1.0] - 2026-03-29
 
 ### Fixed
