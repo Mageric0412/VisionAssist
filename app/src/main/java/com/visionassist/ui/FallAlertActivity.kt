@@ -82,7 +82,7 @@ class FallAlertActivity : AppCompatActivity() {
             1000L
         ) {
             override fun onTick(millisUntilFinished: Long) {
-                remainingSeconds = (millisUntilFinished / 1000).toInt() + 1
+                remainingSeconds = (millisUntilFinished / 1000).toInt()
                 textCountdown.text = remainingSeconds.toString()
                 Timber.v("$TAG: Countdown: $remainingSeconds")
             }
