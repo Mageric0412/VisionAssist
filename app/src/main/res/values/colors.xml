@@ -18,4 +18,12 @@
     <color name="status_ready">#4CAF50</color>
     <color name="status_warning">#FF9800</color>
     <color name="status_error">#F44336</color>
+
+    <!-- Fall Alert colors -->
+    <color name="fall_alert_background">#B71C1C</color>
+    <color name="fall_alert_text">#FFFFFF</color>
+
+    <!-- Badge colors -->
+    <color name="purple_500">#9C27B0</color>
+    <color name="red_500">#F44336</color>
 </resources>

@@ -51,7 +51,7 @@ class SpeechManager(private val context: Context) {
     companion object {
         private const val VIBRATION_DURATION_SHORT = 50L
         private const val VIBRATION_DURATION_LONG = 200L
-        private const val VIBRATION_PATTERN_DOUBLE = longArrayOf(0, 50, 50, 50)
+        private val VIBRATION_PATTERN_DOUBLE = longArrayOf(0, 50, 50, 50)
         private const val DEFAULT_VOLUME = 1.0f
     }
 

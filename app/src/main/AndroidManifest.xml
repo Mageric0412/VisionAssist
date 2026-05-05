@@ -17,6 +17,29 @@
     <!-- Vibration for feedback -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- Emergency Call permissions -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- Foreground Service for Fall Detection -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Sensor permissions for Fall Detection -->
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+
+    <!-- Navigation permissions (GPS + Compass) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- Required for compass -->
+    <uses-feature android:name="android.hardware.sensor.compass" android:required="false" />
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" />
+
     <application
         android:name=".VisionAssistApp"
         android:allowBackup="true"
@@ -42,6 +65,44 @@
             android:name=".ui.SettingsActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity" />
+
+        <activity
+            android:name=".ui.FallAlertActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.VisionAssist" />
+
+        <activity
+            android:name=".ui.PlaceMemoryActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
+        <activity
+            android:name=".ui.EmergencyContactActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
+        <service
+            android:name=".fall.FallDetectionService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="fall_detection" />
+        </service>
+
+        <!-- Place Memory Service for Geofencing -->
+        <service
+            android:name=".places.PlaceMemoryService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Geofence BroadcastReceiver -->
+        <receiver
+            android:name=".places.GeofenceBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
         <!-- HMS ML Kit Detection Service -->
         <meta-data

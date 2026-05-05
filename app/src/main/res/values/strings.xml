@@ -54,4 +54,22 @@
     <string name="btn_start">Start</string>
     <string name="btn_stop">Stop</string>
     <string name="btn_test">Test</string>
+
+    <!-- Fall Detection -->
+    <string name="fall_detected_title">Fall Detected</string>
+    <string name="fall_detected_message">Are you okay? Tap anywhere to cancel.</string>
+    <string name="fall_countdown_format">%d</string>
+    <string name="fall_calling">Calling emergency…</string>
+    <string name="fall_no_contacts">Please set up emergency contacts in Settings.</string>
+    <string name="fall_cancel">Cancelled</string>
+    <string name="fall_confirm_emergency">Confirm Emergency Call</string>
+
+    <!-- Emergency Contacts -->
+    <string name="emergency_contact_name">Contact Name</string>
+    <string name="emergency_contact_phone">Phone Number</string>
+    <string name="emergency_contact_primary">Primary Contact</string>
+    <string name="emergency_contacts_title">Emergency Contacts</string>
+    <string name="emergency_contacts_empty">No emergency contacts set.</string>
+    <string name="emergency_add_contact">Add Contact</string>
+    <string name="emergency_delete_contact">Delete</string>
 </resources>
